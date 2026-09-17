@@ -41,6 +41,15 @@ export function ContactPage() {
       </section>
 
       <section className="section">
+        <h2>สแกนเพิ่มเพื่อน Line</h2>
+        <img
+          className="line-qr"
+          src="/assets/site/thaigigabike.jpg"
+          alt={`Line QR code, Line ID ${shopInfo.lineId}`}
+        />
+      </section>
+
+      <section className="section">
         <h2>คำถามที่พบบ่อย</h2>
         {contactFaq.map((item) => (
           <div className="section" key={item.question}>

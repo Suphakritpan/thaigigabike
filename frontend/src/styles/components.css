@@ -10,16 +10,9 @@
 }
 
 .app-header__logo {
-  height: 40px;
-  width: 40px;
+  height: 48px;
+  width: auto;
   object-fit: contain;
-  border-radius: var(--border-radius);
-}
-
-.app-header__title {
-  font-size: var(--font-size-large);
-  font-weight: 600;
-  margin: 0;
 }
 
 /* Navbar: plain horizontal list, positions never move */
@@ -80,6 +73,10 @@
   background: var(--color-bg-muted);
 }
 
+.card__image--placeholder {
+  border-bottom: 1px solid var(--color-border);
+}
+
 .card__body {
   padding: var(--space-3);
 }
@@ -88,6 +85,12 @@
   font-size: var(--font-size-small);
   font-weight: 600;
   margin: 0;
+}
+
+.line-qr {
+  width: 160px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
 }
 
 /* Category detail page hero image */
