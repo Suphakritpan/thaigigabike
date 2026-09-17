@@ -1,0 +1,57 @@
+import { Card } from '@/components/ui/Card';
+import { categories } from '@/data/categories';
+import type { CategoryGroup } from '@/types/category';
+
+const groupTitles: Record<CategoryGroup, string> = {
+  yamaha: 'YAMAHA',
+  honda: 'HONDA',
+  kawasaki: 'KAWASAKI',
+  suzuki: 'SUZUKI',
+  european: 'ยี่ห้ออื่น ๆ',
+  other: 'อื่น ๆ',
+  parts: 'อะไหล่และของแต่ง',
+  racing: 'กิจกรรมและการแข่งขัน',
+};
+
+const groupOrder: CategoryGroup[] = [
+  'yamaha',
+  'honda',
+  'kawasaki',
+  'suzuki',
+  'european',
+  'other',
+  'parts',
+  'racing',
+];
+
+export function HomePage() {
+  return (
+    <div>
+      <div className="section">
+        <h1>สินค้าและอะไหล่มอเตอร์ไซค์</h1>
+        <p className="text-muted">เลือกดูสินค้าตามยี่ห้อหรือรุ่นรถของท่านได้จากหมวดหมู่ด้านล่าง</p>
+      </div>
+
+      {groupOrder.map((group) => {
+        const items = categories.filter((category) => category.group === group);
+        if (items.length === 0) return null;
+
+        return (
+          <section className="section" key={group}>
+            <h2>{groupTitles[group]}</h2>
+            <div className="card-grid">
+              {items.map((category) => (
+                <Card
+                  key={category.slug}
+                  to={`/category/${category.slug}`}
+                  title={category.title}
+                  image={category.image}
+                />
+              ))}
+            </div>
+          </section>
+        );
+      })}
+    </div>
+  );
+}
