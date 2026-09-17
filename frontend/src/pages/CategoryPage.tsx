@@ -1,6 +1,8 @@
 import { Link, useParams } from 'react-router-dom';
 import { getCategoryBySlug } from '@/data/categories';
+import { getCategoryGallery } from '@/data/categoryImages';
 import { Notice } from '@/components/ui/Notice';
+import { PhotoGallery } from '@/components/ui/PhotoGallery';
 import { shopInfo } from '@/data/shopInfo';
 
 export function CategoryPage() {
@@ -16,21 +18,26 @@ export function CategoryPage() {
     );
   }
 
+  const images = getCategoryGallery(category.slug);
+
   return (
     <div>
       <p className="text-small">
         <Link to="/">หน้าแรก</Link> / {category.title}
       </p>
       <h1>{category.title}</h1>
-      {category.image && (
-        <img className="category-image" src={category.image} alt={category.title} />
-      )}
       {category.description && <p>{category.description}</p>}
 
       <Notice>
-        รายละเอียดสินค้าหมวดนี้อยู่ระหว่างปรับปรุงให้เป็นระบบใหม่ สอบถามรุ่น สี
-        และราคาได้ทางโทรศัพท์หรือ Line ID <strong>{shopInfo.lineId}</strong> โทร. {shopInfo.phone}
+        สอบถามรุ่น สี ราคา และความพร้อมของสินค้าได้ทางโทรศัพท์หรือ Line ID{' '}
+        <strong>{shopInfo.lineId}</strong> โทร. {shopInfo.phone}
       </Notice>
+
+      {images.length > 0 ? (
+        <PhotoGallery title={category.title} images={images} />
+      ) : (
+        <p className="text-muted">ยังไม่มีรูปสินค้าสำหรับหมวดนี้</p>
+      )}
     </div>
   );
 }

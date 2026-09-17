@@ -1,5 +1,6 @@
 import { Card } from '@/components/ui/Card';
 import { categories } from '@/data/categories';
+import { getCategoryThumbnail } from '@/data/categoryImages';
 import type { CategoryGroup } from '@/types/category';
 
 const groupTitles: Record<CategoryGroup, string> = {
@@ -45,7 +46,7 @@ export function HomePage() {
                   key={category.slug}
                   to={`/category/${category.slug}`}
                   title={category.title}
-                  image={category.image}
+                  image={getCategoryThumbnail(category.slug)}
                 />
               ))}
             </div>

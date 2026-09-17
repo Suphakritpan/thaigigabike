@@ -12,7 +12,6 @@ export const categories: Category[] = [
     title: 'SR 400, 500 (New)',
     group: 'yamaha',
     legacyFile: 'SR.html',
-    image: '/assets/bikes/yamaha/nutpangcor-srx.jpg',
     description: 'อะไหล่และของแต่ง Yamaha SR400 / SR500',
   },
   {
@@ -252,7 +251,6 @@ export const categories: Category[] = [
     title: 'Ohlins FG620 & FG433',
     group: 'parts',
     legacyFile: 'Ohlins.html',
-    image: '/assets/bikes/Ohlins/Adapter-Breck.jpg',
     description: 'โช้คอัพ Ohlins สำหรับรถคลาสสิกและรถแต่ง',
   },
   {

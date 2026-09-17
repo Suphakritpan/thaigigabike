@@ -10,8 +10,6 @@ export interface Category {
   group: CategoryGroup;
   /** Original Dreamweaver-era filename this content was migrated from, kept for audit purposes */
   legacyFile: string;
-  /** Thumbnail image path under /assets, shown on the category card. Falls back to the shop logo when absent. */
-  image?: string;
   /** Short description shown on the category card and at the top of the category page */
   description?: string;
 }
