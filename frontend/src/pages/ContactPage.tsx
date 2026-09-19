@@ -1,3 +1,4 @@
+import { ContactMethodRows } from '@/components/shop/ContactMethodRows';
 import { shopInfo, contactFaq } from '@/data/shopInfo';
 
 export function ContactPage() {
@@ -9,31 +10,20 @@ export function ContactPage() {
         <table className="data-table">
           <tbody>
             <tr>
-              <th>ร้าน</th>
+              <th scope="row">ร้าน</th>
               <td>{shopInfo.name}</td>
             </tr>
             <tr>
-              <th>ผู้ดูแลร้าน</th>
+              <th scope="row">ผู้ดูแลร้าน</th>
               <td>{shopInfo.ownerName}</td>
             </tr>
             <tr>
-              <th>ที่อยู่</th>
+              <th scope="row">ที่อยู่</th>
               <td>{shopInfo.addressTh}</td>
             </tr>
+            <ContactMethodRows phone={shopInfo.phone} />
             <tr>
-              <th>โทรศัพท์</th>
-              <td>{shopInfo.phone}</td>
-            </tr>
-            <tr>
-              <th>Line ID</th>
-              <td>{shopInfo.lineId}</td>
-            </tr>
-            <tr>
-              <th>อีเมล</th>
-              <td>{shopInfo.email}</td>
-            </tr>
-            <tr>
-              <th>เวลาเปิด-ปิด</th>
+              <th scope="row">เวลาเปิด-ปิด</th>
               <td>{shopInfo.openingHours}</td>
             </tr>
           </tbody>

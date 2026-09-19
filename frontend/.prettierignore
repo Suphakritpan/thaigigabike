@@ -1,0 +1,8 @@
+dist
+node_modules
+
+# The original Dreamweaver export is kept byte-for-byte as a reference.
+public
+
+# Written by scripts/generate-catalog.mjs, not by hand.
+src/data/*.generated.ts

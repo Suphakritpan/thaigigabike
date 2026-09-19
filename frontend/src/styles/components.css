@@ -1,24 +1,60 @@
-/* Header */
+/* Header: logo on the left, the phone number on the right, because calling the shop
+   is what most visitors came to do. */
 .app-header {
-  height: var(--header-height);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.app-header__inner {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
-  padding: 0 var(--space-4);
-  background: var(--color-bg);
-  border-bottom: 2px solid var(--color-accent);
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: var(--space-3) var(--space-4);
+}
+
+.app-header__brand {
+  display: block;
 }
 
 .app-header__logo {
-  height: 48px;
+  height: 52px;
   width: auto;
   object-fit: contain;
 }
 
-/* Navbar: plain horizontal list, positions never move */
+.app-header__contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: var(--font-size-small);
+  color: var(--color-text-muted);
+}
+
+.app-header__phone {
+  font-size: var(--font-size-large);
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.app-header__detail {
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .app-header__contact {
+    align-items: flex-start;
+  }
+}
+
+/* Navbar: plain horizontal list of tabs, positions never move. Active/hover
+   state is a bottom bar rather than an inverted fill, so it reads as "you
+   are here" instead of a button being pressed. */
 .navbar {
-  background: var(--color-bg-muted);
-  border-bottom: 1px solid var(--color-border);
+  background: var(--color-accent);
   overflow-x: auto;
 }
 
@@ -32,24 +68,41 @@
   display: block;
   padding: var(--space-3) var(--space-4);
   font-size: var(--font-size-small);
+  font-weight: 600;
   white-space: nowrap;
+  color: var(--color-text);
   border-right: 1px solid var(--color-border);
+  border-bottom: 3px solid transparent;
 }
 
-.navbar__item a:hover,
+.navbar__item a:hover {
+  background: var(--color-accent-bg);
+  color: var(--color-accent);
+}
+
 .navbar__item a.is-active {
-  background: var(--color-accent);
-  color: var(--color-accent-contrast);
+  background: var(--color-bg);
+  border-bottom-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.navbar__item a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
 }
 
 /* Footer */
 .app-footer {
   border-top: 1px solid var(--color-border);
-  background: var(--color-bg-muted);
-  padding: var(--space-4);
+  background: var(--color-bg);
+  padding: var(--space-5) var(--space-4);
   text-align: center;
   font-size: var(--font-size-small);
   color: var(--color-text-muted);
+}
+
+.app-footer p {
+  margin: 0;
 }
 
 /* Card: used for category / product tiles, laid out like a document thumbnail */
@@ -60,10 +113,25 @@
 }
 
 .card {
+  display: block;
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
   background: var(--color-bg);
+  box-shadow: var(--shadow-card);
   overflow: hidden;
+  transition:
+    box-shadow var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.card:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 .card__image {
@@ -73,12 +141,9 @@
   background: var(--color-bg-muted);
 }
 
-.card__image--placeholder {
-  border-bottom: 1px solid var(--color-border);
-}
-
 .card__body {
   padding: var(--space-3);
+  border-top: 1px solid var(--color-border);
 }
 
 .card__title {
@@ -134,10 +199,16 @@
   border-radius: var(--border-radius);
   font-size: var(--font-size-small);
   font-weight: 600;
+  transition: background var(--transition-fast);
 }
 
 .button:hover {
   background: var(--color-accent-hover);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
 }
 
 /* Notice / feedback banner shown after user actions */
@@ -151,12 +222,32 @@
 
 .notice--success {
   border-color: var(--color-success);
-  background: #f1faf1;
+  background: var(--color-success-bg);
   color: var(--color-success);
 }
 
 .notice--error {
   border-color: var(--color-danger);
-  background: #fbf0f1;
+  background: var(--color-danger-bg);
   color: var(--color-danger);
+}
+
+/* On a phone the four menu items wrap onto two rows instead of scrolling sideways,
+   so nothing is hidden off the edge of the screen. */
+@media (max-width: 640px) {
+  .navbar {
+    overflow-x: visible;
+  }
+
+  .navbar__list {
+    flex-wrap: wrap;
+  }
+
+  .navbar__item {
+    flex: 1 1 50%;
+  }
+
+  .navbar__item a {
+    text-align: center;
+  }
 }

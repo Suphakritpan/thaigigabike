@@ -2,22 +2,64 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: var(--color-page-bg);
 }
 
 .page-content {
   flex: 1;
   width: 100%;
   max-width: var(--max-content-width);
-  margin: 0 auto;
-  padding: var(--space-5) var(--space-4);
+  margin: var(--space-5) auto;
+  padding: var(--space-6);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-soft);
 }
 
 .section {
   margin-bottom: var(--space-6);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 720px) {
   .page-content {
+    margin: 0;
     padding: var(--space-4) var(--space-3);
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
   }
+}
+
+/* Links inside page content look like links: accent colour plus an underline, never
+   colour alone. */
+.page-content a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.page-content a:hover {
+  color: var(--color-accent-hover);
+}
+
+.page-content .card,
+.page-content .card:hover {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+/* Skip link: hidden until focused, so keyboard users can jump past the menu. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+
+.skip-link:focus {
+  left: var(--space-3);
+  top: var(--space-3);
+  z-index: 10;
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  border-radius: var(--border-radius);
 }

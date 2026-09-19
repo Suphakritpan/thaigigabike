@@ -8,8 +8,12 @@ export interface Category {
   title: string;
   /** Brand / section this category belongs to, used for grouping on the home page */
   group: CategoryGroup;
-  /** Original Dreamweaver-era filename this content was migrated from, kept for audit purposes */
-  legacyFile: string;
+  /**
+   * What the category holds, which decides the wording on the page:
+   * 'products' (default) for parts with prices, 'showcase' for customer bikes,
+   * trips and race photos.
+   */
+  kind?: 'products' | 'showcase';
   /** Short description shown on the category card and at the top of the category page */
   description?: string;
 }

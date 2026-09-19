@@ -1,4 +1,5 @@
 import { Notice } from '@/components/ui/Notice';
+import { ContactMethodRows } from '@/components/shop/ContactMethodRows';
 import { shopInfo, orderingSteps, orderingNote, shippingNotice } from '@/data/shopInfo';
 
 export function PaymentPage() {
@@ -24,18 +25,7 @@ export function PaymentPage() {
         <h2>ช่องทางติดต่อเพื่อสั่งสินค้า</h2>
         <table className="data-table">
           <tbody>
-            <tr>
-              <th>โทรศัพท์</th>
-              <td>{shopInfo.phoneIntl}</td>
-            </tr>
-            <tr>
-              <th>Line ID</th>
-              <td>{shopInfo.lineId}</td>
-            </tr>
-            <tr>
-              <th>อีเมล</th>
-              <td>{shopInfo.email}</td>
-            </tr>
+            <ContactMethodRows phone={shopInfo.phoneIntl} />
           </tbody>
         </table>
         <p className="text-muted text-small">

@@ -1,0 +1,144 @@
+/* Product list: one row per product, photos first, price last - the same reading
+   order the printed price list used, so it stays familiar without instructions. */
+.product-list {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.product {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  background: var(--color-bg);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow var(--transition-fast);
+}
+
+.product:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.product__photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-2);
+  align-content: start;
+}
+
+/* The first photo fills the column; the extra angles stay small so a product with
+   six photos does not push the next one off the screen. */
+.product__photos > :first-child:not(:last-child) {
+  grid-column: 1 / -1;
+}
+
+.product__photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  /* contain, not cover: a cropped part photo is useless to someone checking fitment */
+  object-fit: contain;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  background: var(--color-bg-muted);
+}
+
+.product__body {
+  min-width: 0;
+}
+
+.product__name {
+  font-size: var(--font-size-large);
+  margin-bottom: var(--space-2);
+}
+
+.product__description {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-small);
+}
+
+/* Price reads as a highlighted spreadsheet cell, not a link or a button. */
+.product__price {
+  display: inline-block;
+  margin: 0;
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--font-size-large);
+  font-weight: 600;
+  color: var(--color-accent);
+  background: var(--color-accent-bg);
+  border-radius: var(--border-radius);
+}
+
+.product__price-label {
+  font-size: var(--font-size-small);
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.product-list__more {
+  margin-top: var(--space-4);
+  text-align: center;
+}
+
+/* Search box: always one plain labelled field, never a hidden filter panel. */
+.search-input {
+  margin-bottom: var(--space-4);
+}
+
+.search-input__label {
+  display: block;
+  margin-bottom: var(--space-1);
+  font-size: var(--font-size-small);
+  font-weight: 600;
+}
+
+.search-input__field {
+  width: 100%;
+  max-width: 420px;
+  padding: var(--space-2) var(--space-3);
+  font: inherit;
+  color: inherit;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  background: var(--color-bg);
+}
+
+.search-input__field:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
+/* Breadcrumb: shows where the visitor is and how to get back in one click. */
+.breadcrumb {
+  font-size: var(--font-size-small);
+  color: var(--color-text-muted);
+}
+
+.breadcrumb a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.breadcrumb a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@media (max-width: 720px) {
+  .product {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Notes: plain prose the old page carried outside its product list. */
+.note-list {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.note-list__item {
+  padding-left: var(--space-4);
+  border-left: 3px solid var(--color-border);
+  color: var(--color-text-muted);
+}

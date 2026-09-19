@@ -1,6 +1,6 @@
 import { Card } from '@/components/ui/Card';
 import { categories } from '@/data/categories';
-import { getCategoryThumbnail } from '@/data/categoryImages';
+import { getCategoryThumbnail } from '@/data/thumbnails';
 import type { CategoryGroup } from '@/types/category';
 
 const groupTitles: Record<CategoryGroup, string> = {

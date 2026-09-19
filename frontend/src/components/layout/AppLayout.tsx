@@ -6,9 +6,12 @@ import { Footer } from '@/components/layout/Footer';
 export function AppLayout() {
   return (
     <div className="page">
+      <a className="skip-link" href="#main-content">
+        ข้ามไปที่เนื้อหาหลัก
+      </a>
       <Header />
       <Navbar />
-      <main className="page-content">
+      <main className="page-content" id="main-content">
         <Outlet />
       </main>
       <Footer />
