@@ -56,7 +56,7 @@ becomes a product; a block that is only text becomes a note shown under
 |---|---|---|---|
 | `index.html` | `/` | done | Category grid grouped by brand. Its own product blocks were merged into `sr400-500` |
 | `index 1.html` | - | done | English product list; merged into `/category/products` |
-| `index jp.html` | - | todo | Japanese homepage variant; revisit if the shop wants a language switch |
+| `index jp.html` | - | dropped | Japanese variant of the home page. Its Japanese text is corrupted in the export and its photos already appear elsewhere, so `/contact` carries an English section instead |
 | `YAMAHA.html` | - | done | R1/R6 parts merged into `r1-r6` |
 | `honda.html` | - | done | CBR parts became the new `cbr600-1000` category |
 | `kawasaki.html` | - | done | Estrella250/TR250 parts merged into `estrella250` |
@@ -125,13 +125,20 @@ taken from it, so nothing appears twice.
 
 Totals: 1,416 products, 27 notes, 546 category photos, 170 price-list rows.
 
+## Decisions made
+
+- **Prices.** The shop keeps the prices exactly as the old pages had them, so
+  `parse-legacy-page.mjs` copies each price through verbatim ("3,800 ฿", "700 ฿")
+  and nothing is rounded, converted or re-checked. Editing a price means editing
+  the legacy page it came from and re-running `npm run catalog`.
+
 ## Next steps
 
-1. Decide whether the Japanese homepage variant (`index jp.html`) means the site
-   needs a language switch, or whether an English/Japanese line on `/contact` is
-   enough.
-2. Write a short introduction for the showcase categories (`sr-swingarm`,
-   `racing-team`, `gallery`, `race-photos`, `parts-all`); they are photo-only, and a
-   sentence of context would help a first-time visitor.
-3. Ask the shop to confirm the prices carried over from the old pages before the
-   site goes live - some were last edited years ago.
+1. Ask the shop which overseas phone number is current. The old pages list several
+   for English and Japanese speakers (081-416-5060, 089-762-3199, 087-590-7500,
+   092-408-2220, 083-029-6533) with no way to tell which still work, so `/contact`
+   shows only the main number.
+2. If the catalogue keeps growing, split `catalog.generated.ts` per category and load
+   each one on demand. Today it is a single 459 kB chunk (89 kB gzipped) fetched the
+   first time a visitor opens any category page, which is fine at the current size.
+   The first page load itself is 185 kB (62 kB gzipped).

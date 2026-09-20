@@ -12,6 +12,12 @@ export const shopInfo = {
   email: 'aonggb@yahoo.com',
   lineId: 'thaigigabike',
   openingHours: 'เปิด 9.00 น. - ปิด 20.00 น.',
+  /** The shop's own summary of what it does, from the old home page. */
+  serviceIntro:
+    'รับออกแบบตกแต่ง SR และรับผลิตอะไหล่ตามแบบทุกรุ่นทุกยี่ห้อตามที่คุณต้องการ ชิ้นงานทุกชิ้นทางร้านออกแบบและผลิตเอง',
+  /** Shown in English because the old site used it to reach overseas buyers. */
+  internationalNote:
+    'We deliver to customers all around the world. Shops interested in becoming a dealer are welcome to contact us.',
 } as const;
 
 export const orderingSteps: string[] = [

@@ -1,4 +1,7 @@
 import { Card } from '@/components/ui/Card';
+import { Notice } from '@/components/ui/Notice';
+import { HeroBanner } from '@/components/home/HeroBanner';
+import { shopInfo } from '@/data/shopInfo';
 import { categories } from '@/data/categories';
 import { getCategoryThumbnail } from '@/data/thumbnails';
 import type { CategoryGroup } from '@/types/category';
@@ -28,9 +31,16 @@ const groupOrder: CategoryGroup[] = [
 export function HomePage() {
   return (
     <div>
+      <HeroBanner />
+
       <div className="section">
         <h1>สินค้าและอะไหล่มอเตอร์ไซค์</h1>
+        <p>{shopInfo.serviceIntro}</p>
         <p className="text-muted">เลือกดูสินค้าตามยี่ห้อหรือรุ่นรถของท่านได้จากหมวดหมู่ด้านล่าง</p>
+        <Notice>
+          สอบถามสินค้าและสั่งทำได้ที่ โทร. {shopInfo.phone} หรือ Line ID{' '}
+          <strong>{shopInfo.lineId}</strong> ({shopInfo.openingHours})
+        </Notice>
       </div>
 
       {groupOrder.map((group) => {

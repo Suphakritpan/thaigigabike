@@ -6,6 +6,8 @@ export function Footer() {
       <p>
         {shopInfo.name} — โทร. {shopInfo.phone} — Line ID: {shopInfo.lineId} — {shopInfo.email}
       </p>
+      <p>{shopInfo.addressTh}</p>
+      <p lang="en">{shopInfo.internationalNote}</p>
     </footer>
   );
 }

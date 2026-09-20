@@ -39,6 +39,17 @@ export function ContactPage() {
         />
       </section>
 
+      <section className="section" lang="en">
+        <h2>International customers</h2>
+        <p>{shopInfo.internationalNote}</p>
+        <p>
+          Phone{' '}
+          <a href={`tel:${shopInfo.phoneIntl.replace(/[^+\d]/g, '')}`}>{shopInfo.phoneIntl}</a>{' '}
+          &middot; E-mail <a href={`mailto:${shopInfo.email}`}>{shopInfo.email}</a> &middot; Line ID{' '}
+          {shopInfo.lineId}
+        </p>
+      </section>
+
       <section className="section">
         <h2>คำถามที่พบบ่อย</h2>
         {contactFaq.map((item) => (
