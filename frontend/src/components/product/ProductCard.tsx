@@ -2,14 +2,18 @@ import type { Product } from '@/types/product';
 
 interface ProductCardProps {
   product: Product;
+  /** Grid view: one photo and a clamped description, to fit many tiles per row. */
+  compact?: boolean;
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, compact = false }: ProductCardProps) {
+  const images = compact ? product.images.slice(0, 1) : product.images;
+
   return (
-    <article className="product">
-      {product.images.length > 0 && (
+    <article className={compact ? 'product product--compact' : 'product'}>
+      {images.length > 0 && (
         <div className="product__photos">
-          {product.images.map((image, index) => (
+          {images.map((image, index) => (
             <img
               key={image}
               className="product__photo"

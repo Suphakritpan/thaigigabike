@@ -143,6 +143,35 @@
   }
 }
 
+/* Shop stats: real catalog size + last-updated date, in place of the old
+   site's fake visitor hit-counter. Plain definition list, no counters ticking up. */
+.shop-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-3);
+  margin: var(--space-4) 0 0 0;
+}
+
+.shop-stats__item {
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  background: var(--color-bg-muted);
+  text-align: center;
+}
+
+.shop-stats__item dt {
+  font-size: var(--font-size-small);
+  color: var(--color-text-muted);
+}
+
+.shop-stats__item dd {
+  margin: var(--space-1) 0 0 0;
+  font-size: var(--font-size-large);
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
 /* Card: used for category / product tiles, laid out like a document thumbnail */
 .card-grid {
   display: grid;

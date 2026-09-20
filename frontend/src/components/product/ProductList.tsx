@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { ProductCard } from '@/components/product/ProductCard';
 import { SearchInput } from '@/components/ui/SearchInput';
 import { Button } from '@/components/ui/Button';
+import { ViewToggle, type ViewMode } from '@/components/ui/ViewToggle';
 import { filterProducts } from '@/data/catalog';
 import type { Product } from '@/types/product';
 
@@ -21,6 +22,7 @@ interface ProductListProps {
 export function ProductList({ title, searchLabel, products }: ProductListProps) {
   const [query, setQuery] = useState('');
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const [view, setView] = useState<ViewMode>('list');
 
   const matches = useMemo(() => filterProducts(products, query), [products, query]);
   const visible = matches.slice(0, visibleCount);
@@ -34,9 +36,12 @@ export function ProductList({ title, searchLabel, products }: ProductListProps) 
 
   return (
     <section className="section">
-      <h2>
-        {title} ({products.length} รายการ)
-      </h2>
+      <div className="product-list__header">
+        <h2>
+          {title} ({products.length} รายการ)
+        </h2>
+        {products.length >= SEARCH_THRESHOLD && <ViewToggle value={view} onChange={setView} />}
+      </div>
 
       {products.length >= SEARCH_THRESHOLD && (
         <SearchInput
@@ -56,9 +61,9 @@ export function ProductList({ title, searchLabel, products }: ProductListProps) 
               แสดง {visible.length} จาก {matches.length} รายการ
             </p>
           )}
-          <div className="product-list">
+          <div className={view === 'grid' ? 'product-list product-list--grid' : 'product-list'}>
             {visible.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard key={product.id} product={product} compact={view === 'grid'} />
             ))}
           </div>
           {visibleCount < matches.length && (
